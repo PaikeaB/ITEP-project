@@ -1,0 +1,9 @@
+platform,document_type,word_count,operational_terms_count,per_1000_words_operational,per_1000_words_indirect_neutrality,gap_ratio,absent_algorithmic_curation,absent_shadow_ban,absent_shadowbanning,absent_demonetize,absent_demonetization,absent_engagement_optimization,absent_behavioral_data,absent_ad_targeting,absent_content_suppression,absent_downrank,absent_downranking,absent_visibility_reduction,absent_reach_limitation,absent_audience_restriction,absent_ad_revenue,absent_monetization,absent_click-through,absent_impression,absent_engagement_rate,absent_behavioral_profiling,absent_data_harvesting,absent_surveillance
+Meta,Terms_of_Service,5328,0,0.0,19.89,inf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Meta,Community_Standards,685,0,0.0,36.5,inf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+X,Terms_of_Service,42,0,0.0,0.0,inf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+X,Rules_and_Policies,721,0,0.0,20.8,inf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+YouTube,Terms_of_Service,3944,1,0.25,19.52,77.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+YouTube,Community_Guidelines,541,0,0.0,25.88,inf,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Reddit,User_Agreement,12609,4,0.32,18.0,56.7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0
+Reddit,Content_Policy,5572,2,0.36,26.02,72.5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0

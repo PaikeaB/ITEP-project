@@ -1,0 +1,31 @@
+passage_id,platform,document,passage,category
+passage_001,Meta,Community Standards,Sample passage text 1...,Safety/Moderation
+passage_002,Meta,Community Standards,Sample passage text 2...,Liability/Legal
+passage_003,Meta,Community Standards,Sample passage text 3...,Free Speech
+passage_004,Meta,Community Standards,Sample passage text 4...,Safety/Moderation
+passage_005,Meta,Community Standards,Sample passage text 5...,Enforcement
+passage_006,Meta,Community Standards,Sample passage text 6...,Liability/Legal
+passage_007,Meta,Community Standards,Sample passage text 7...,Free Speech
+passage_008,Meta,Community Standards,Sample passage text 8...,Safety/Moderation
+passage_009,X,Rules and Policies,Sample passage text 9...,Free Speech
+passage_010,X,Rules and Policies,Sample passage text 10...,Free Speech
+passage_011,X,Rules and Policies,Sample passage text 11...,Liability/Legal
+passage_012,X,Rules and Policies,Sample passage text 12...,Safety/Moderation
+passage_013,X,Rules and Policies,Sample passage text 13...,Enforcement
+passage_014,X,Rules and Policies,Sample passage text 14...,Free Speech
+passage_015,X,Rules and Policies,Sample passage text 15...,Safety/Moderation
+passage_016,X,Rules and Policies,Sample passage text 16...,Liability/Legal
+passage_017,YouTube,Community Guidelines,Sample passage text 17...,Safety/Moderation
+passage_018,YouTube,Community Guidelines,Sample passage text 18...,Enforcement
+passage_019,YouTube,Community Guidelines,Sample passage text 19...,Liability/Legal
+passage_020,YouTube,Community Guidelines,Sample passage text 20...,Free Speech
+passage_021,YouTube,Community Guidelines,Sample passage text 21...,Safety/Moderation
+passage_022,YouTube,Community Guidelines,Sample passage text 22...,Enforcement
+passage_023,YouTube,Community Guidelines,Sample passage text 23...,Liability/Legal
+passage_024,Reddit,Content Policy,Sample passage text 24...,Community-Driven
+passage_025,Reddit,Content Policy,Sample passage text 25...,Free Speech
+passage_026,Reddit,Content Policy,Sample passage text 26...,Safety/Moderation
+passage_027,Reddit,Content Policy,Sample passage text 27...,Enforcement
+passage_028,Reddit,Content Policy,Sample passage text 28...,Community-Driven
+passage_029,Reddit,Content Policy,Sample passage text 29...,Liability/Legal
+passage_030,Reddit,Content Policy,Sample passage text 30...,Free Speech
