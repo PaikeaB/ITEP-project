@@ -1,0 +1,9 @@
+platform,document_type,date,source_url,filename,word_count,fetch_date,error
+Meta,Terms_of_Service,2025/2026,https://www.facebook.com/terms.php,meta_terms_of_service.txt,5328,2026-04-07,None
+Meta,Community_Standards,2025/2026,https://www.facebook.com/communitystandards/,meta_community_standards.txt,685,2026-04-07,None
+X,Terms_of_Service,2025/2026,https://legal.x.com/en/tos,x_terms_of_service.txt,42,2026-04-07,None
+X,Rules_and_Policies,2025/2026,https://help.x.com/en/rules-and-policies/x-rules,x_rules_and_policies.txt,721,2026-04-07,None
+YouTube,Terms_of_Service,2025/2026,https://www.youtube.com/t/terms,youtube_terms_of_service.txt,3944,2026-04-07,None
+YouTube,Community_Guidelines,2025/2026,https://support.google.com/youtube/answer/9288567,youtube_community_guidelines.txt,541,2026-04-07,None
+Reddit,User_Agreement,2025/2026,https://www.redditinc.com/policies/user-agreement,reddit_user_agreement.txt,12609,2026-04-07,None
+Reddit,Content_Policy,2025/2026,https://www.redditinc.com/policies/content-policy,reddit_content_policy.txt,5572,2026-04-07,None

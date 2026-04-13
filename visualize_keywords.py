@@ -209,3 +209,30 @@ for i, name in enumerate(['1_direct_vs_indirect_by_platform', '2_stacked_by_docu
                            '3_indirect_to_direct_ratio', '4_top20_keywords',
                            '5_cluster_heatmap_by_platform'], 1):
     print(f"  {name}.png")
+
+# ── 6. Absence Analysis: Operational vs. Neutrality Language ─────────────────
+
+absence_df = pd.read_csv('metadata/absence_analysis.csv')
+
+fig, ax = plt.subplots(figsize=(12, 6))
+
+labels = [f"{r['platform']}\n{r['document_type'].replace('_', ' ')}" 
+          for _, r in absence_df.iterrows()]
+x = np.arange(len(labels))
+width = 0.35
+
+ax.bar(x - width/2, absence_df['per_1000_words_indirect_neutrality'], 
+       width, label='Indirect neutrality language', color=COLOR_INDIRECT, alpha=0.9)
+ax.bar(x + width/2, absence_df['per_1000_words_operational'], 
+       width, label='Operational reality terms', color=COLOR_DIRECT, alpha=0.9)
+
+ax.set_title('Rhetorical Presence vs. Operational Absence\n(Indirect neutrality language vs. terms describing actual platform governance)', 
+             fontsize=TITLE_SIZE, fontweight='bold')
+ax.set_xlabel('Document', fontsize=LABEL_SIZE)
+ax.set_ylabel('Frequency per 1,000 Words', fontsize=LABEL_SIZE)
+ax.set_xticks(x)
+ax.set_xticklabels(labels, fontsize=8, ha='center')
+ax.legend(fontsize=TICK_SIZE)
+ax.grid(axis='y', linestyle='--', alpha=0.4)
+fig.tight_layout()
+save(fig, '6_absence_analysis')

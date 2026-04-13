@@ -238,3 +238,81 @@ print(results_df[['platform', 'document_type', 'word_count',
                    'direct_terms_count', 'indirect_terms_count',
                    'per_1000_words_direct', 'per_1000_words_indirect',
                    'per_1000_words_total']].to_string(index=False))
+
+# ── ABSENCE ANALYSIS ──────────────────────────────────────────────────────────
+# These are terms describing how platforms actually operate that are
+# systematically absent from their policy documents. The gap between
+# indirect neutrality language (dense) and operational reality terms (absent)
+# is the accountability foreclosure this project argues for.
+
+KEYWORDS_OPERATIONAL = [
+    'algorithmic curation',
+    'shadow ban',
+    'shadowbanning',
+    'demonetize',
+    'demonetization',
+    'engagement optimization',
+    'behavioral data',
+    'ad targeting',
+    'content suppression',
+    'downrank',
+    'downranking',
+    'visibility reduction',
+    'reach limitation',
+    'audience restriction',
+    'ad revenue',
+    'monetization',
+    'click-through',
+    'impression',
+    'engagement rate',
+    'behavioral profiling',
+    'data harvesting',
+    'surveillance',
+]
+
+print("\n── ABSENCE ANALYSIS ──")
+print("Operational reality terms vs. neutrality rhetoric\n")
+
+absence_results = []
+
+for _, row in metadata_df.iterrows():
+    filepath = f"data/clean_text/{row['filename']}"
+    if not os.path.exists(filepath):
+        continue
+
+    text = load_document(filepath)
+    word_count = len(text.split())
+    op_counts = count_keywords(text, KEYWORDS_OPERATIONAL)
+    op_total = sum(op_counts.values())
+    op_per_1000 = calculate_frequency_per_1000(op_total, word_count)
+
+    # Pull indirect density from results_df for comparison
+    indirect_per_1000 = results_df[
+        (results_df['platform'] == row['platform']) &
+        (results_df['document_type'] == row['document_type'])
+    ]['per_1000_words_indirect'].values[0]
+
+    absence_result = {
+        'platform': row['platform'],
+        'document_type': row['document_type'],
+        'word_count': word_count,
+        'operational_terms_count': op_total,
+        'per_1000_words_operational': round(op_per_1000, 2),
+        'per_1000_words_indirect_neutrality': round(indirect_per_1000, 2),
+        'gap_ratio': round(indirect_per_1000 / op_per_1000, 1) if op_per_1000 > 0 else float('inf'),
+    }
+    for kw, count in op_counts.items():
+        col = f"absent_{kw.replace(' ', '_')}"
+        absence_result[col] = count
+
+    absence_results.append(absence_result)
+
+    print(f"{row['platform']} - {row['document_type']}")
+    print(f"  Indirect neutrality terms: {indirect_per_1000:.2f} per 1k")
+    print(f"  Operational reality terms: {op_per_1000:.2f} per 1k")
+    gap = f"{indirect_per_1000/op_per_1000:.1f}x" if op_per_1000 > 0 else "∞"
+    print(f"  Gap ratio: {gap}\n")
+
+absence_df = pd.DataFrame(absence_results)
+absence_df.to_csv('metadata/absence_analysis.csv', index=False)
+print("Saved to metadata/absence_analysis.csv")
