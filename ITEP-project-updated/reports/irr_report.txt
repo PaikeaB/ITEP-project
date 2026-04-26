@@ -5,7 +5,7 @@ Total passages coded: 30
 Agreements: 25
 Disagreements: 5
 Percentage Agreement: 83.3%
-Cohen's Kappa: 0.784
+Cohen's Kappa: 0.776
 
 Interpretation: Substantial agreement
 
@@ -14,41 +14,41 @@ DISAGREEMENTS TO RESOLVE:
 
 Passage ID: passage_003
 Platform: Meta
-Document: Community Standards
-Nathan's code: Free Speech
-Paikea's code: Liability/Legal
-Text: Sample passage text 3......
+Document: Community_Standards
+Nathan's code: procedural_neutrality
+Paikea's code: expressive_diversity
+Text: other cases, we may remove content that uses ambiguous or implicit language when additional context allows us to reasonably understand that the content goes against our standards. Our commitment to ex...
 ------------------------------------------------------------
 
-Passage ID: passage_006
+Passage ID: passage_007
 Platform: Meta
-Document: Community Standards
-Nathan's code: Liability/Legal
-Paikea's code: Enforcement
-Text: Sample passage text 6......
+Document: Terms_of_Service
+Nathan's code: harm_justification
+Paikea's code: procedural_neutrality
+Text: to respond to user reports of potentially violating content. If we learn of content or conduct like this, we may take appropriate action based on our assessment that may include - notifying you, offer...
 ------------------------------------------------------------
 
-Passage ID: passage_013
-Platform: X
-Document: Rules and Policies
-Nathan's code: Enforcement
-Paikea's code: Free Speech
-Text: Sample passage text 13......
+Passage ID: passage_012
+Platform: Reddit
+Document: Content_Policy
+Nathan's code: harm_justification
+Paikea's code: community_displacement
+Text: may be for you (and you may find some unrelatable or even offensive), no community should be used as a weapon. Communities should create a sense of belonging for their members, not try to diminish it ...
 ------------------------------------------------------------
 
 Passage ID: passage_019
-Platform: YouTube
-Document: Community Guidelines
-Nathan's code: Liability/Legal
-Paikea's code: Safety/Moderation
-Text: Sample passage text 19......
+Platform: X
+Document: Rules_and_Policies
+Nathan's code: procedural_neutrality
+Paikea's code: expressive_diversity
+Text: General The X Rules X's purpose is to serve the public conversation. Violence, harassment and other similar types of behavior discourage people from expressing themselves, and ultimately diminish the ...
 ------------------------------------------------------------
 
-Passage ID: passage_026
-Platform: Reddit
-Document: Content Policy
-Nathan's code: Safety/Moderation
-Paikea's code: Free Speech
-Text: Sample passage text 26......
+Passage ID: passage_024
+Platform: YouTube
+Document: Community_Guidelines
+Nathan's code: expressive_diversity
+Paikea's code: community_displacement
+Text: YouTube's [[ Community ]] Guidelines When you use YouTube, you join a community of people from all over the world. The guidelines below help keep YouTube fun and enjoyable for everyone. If you see con...
 ------------------------------------------------------------
 

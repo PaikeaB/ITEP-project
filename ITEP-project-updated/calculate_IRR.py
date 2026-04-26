@@ -5,14 +5,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Create output directories
 os.makedirs('visualizations', exist_ok=True)
 os.makedirs('reports', exist_ok=True)
 
-# Load coded data
 print("Loading coded data...")
 nathan_codes = pd.read_csv('metadata/nathan_coded_passages.csv')
 paikea_codes = pd.read_csv('metadata/paikea_coded_passages.csv')
+
+# Rename framing_code to category for consistency
+nathan_codes = nathan_codes.rename(columns={'framing_code': 'category', 'document_type': 'document'})
+paikea_codes = paikea_codes.rename(columns={'framing_code': 'category', 'document_type': 'document'})
 
 # Merge on passage_id
 merged = nathan_codes.merge(paikea_codes, on='passage_id', suffixes=('_nathan', '_paikea'))
@@ -38,7 +40,6 @@ elif kappa < 0.80:
 else:
     print("Almost perfect agreement")
 
-# Calculate percentage agreement
 total = len(merged)
 agreements = (merged['category_nathan'] == merged['category_paikea']).sum()
 percent_agreement = (agreements / total) * 100
@@ -48,13 +49,11 @@ print(f"Agreements: {agreements} out of {total}")
 print(f"Disagreements: {total - agreements} out of {total}")
 print("="*60 + "\n")
 
-# Create confusion matrix
 categories = sorted(set(merged['category_nathan'].unique()) | set(merged['category_paikea'].unique()))
 cm = confusion_matrix(merged['category_nathan'], merged['category_paikea'], labels=categories)
 
-# Visualize confusion matrix
 plt.figure(figsize=(10, 8))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
             xticklabels=categories, yticklabels=categories,
             cbar_kws={'label': 'Count'})
 plt.title('Inter-Rater Agreement Confusion Matrix', fontsize=14, fontweight='bold')
@@ -66,16 +65,14 @@ plt.tight_layout()
 plt.savefig('visualizations/irr_confusion_matrix.png', dpi=300, bbox_inches='tight')
 print("✓ Confusion matrix saved to visualizations/irr_confusion_matrix.png")
 
-# Identify disagreements
 disagreements = merged[merged['category_nathan'] != merged['category_paikea']].copy()
-disagreements = disagreements[['passage_id', 'platform_nathan', 'document_nathan', 
+disagreements = disagreements[['passage_id', 'platform_nathan', 'document_nathan',
                                 'category_nathan', 'category_paikea', 'passage_nathan']]
-disagreements.columns = ['passage_id', 'platform', 'document', 
+disagreements.columns = ['passage_id', 'platform', 'document',
                          'nathan_category', 'paikea_category', 'passage']
 disagreements.to_csv('metadata/disagreements_to_resolve.csv', index=False)
 print(f"✓ {len(disagreements)} disagreements saved to metadata/disagreements_to_resolve.csv")
 
-# Generate detailed IRR report
 with open('reports/irr_report.txt', 'w', encoding='utf-8') as f:
     f.write("INTER-RATER RELIABILITY REPORT\n")
     f.write("="*60 + "\n\n")
@@ -84,7 +81,7 @@ with open('reports/irr_report.txt', 'w', encoding='utf-8') as f:
     f.write(f"Disagreements: {total - agreements}\n")
     f.write(f"Percentage Agreement: {percent_agreement:.1f}%\n")
     f.write(f"Cohen's Kappa: {kappa:.3f}\n\n")
-    
+
     if kappa < 0.20:
         interpretation = "Slight agreement"
     elif kappa < 0.40:
@@ -95,20 +92,19 @@ with open('reports/irr_report.txt', 'w', encoding='utf-8') as f:
         interpretation = "Substantial agreement"
     else:
         interpretation = "Almost perfect agreement"
-    
+
     f.write(f"Interpretation: {interpretation}\n\n")
-    
+
     if len(disagreements) > 0:
         f.write("DISAGREEMENTS TO RESOLVE:\n")
         f.write("-"*60 + "\n\n")
-        
         for idx, row in disagreements.iterrows():
             f.write(f"Passage ID: {row['passage_id']}\n")
             f.write(f"Platform: {row['platform']}\n")
             f.write(f"Document: {row['document']}\n")
             f.write(f"Nathan's code: {row['nathan_category']}\n")
             f.write(f"Paikea's code: {row['paikea_category']}\n")
-            f.write(f"Text: {row['passage'][:200]}...\n")
+            f.write(f"Text: {str(row['passage'])[:200]}...\n")
             f.write("-"*60 + "\n\n")
 
 print("✓ Full IRR report saved to reports/irr_report.txt\n")

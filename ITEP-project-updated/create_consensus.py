@@ -2,27 +2,21 @@ import pandas as pd
 
 print("Creating consensus dataset from individual codings...\n")
 
-# Load the coded data
 nathan = pd.read_csv('metadata/nathan_coded_passages.csv')
 paikea = pd.read_csv('metadata/paikea_coded_passages.csv')
 
-# Merge
 merged = nathan.merge(paikea, on='passage_id', suffixes=('_nathan', '_paikea'))
 
-# Create consensus dataset
 consensus = []
 
 for idx, row in merged.iterrows():
-    # If they agree, use that category
     if row['category_nathan'] == row['category_paikea']:
         category = row['category_nathan']
         resolution = 'agreement'
     else:
-        # For disagreements, in a real scenario you'd manually resolve these
-        # For now, we'll use Nathan's coding as default (you can change this)
-        category = row['category_nathan']
-        resolution = 'disagreement_resolved_to_nathan'
-    
+        category = row['category_paikea']
+        resolution = 'disagreement_resolved_to_paikea'
+
     consensus.append({
         'passage_id': row['passage_id'],
         'platform': row['platform_nathan'],
